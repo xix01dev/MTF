@@ -188,13 +188,15 @@ export default function BoxingStateGame() {
         </div>
 
         {/* Footer ภายใน Frame */}
-        <div style={s.footerContainer}>
-          <div style={s.ruleSection}>
-            <p style={s.ruleCyan}><span style={s.highlightCyan}>ตั้งการ์ด</span> ต่อยให้ไวใน 15 วินาที</p>
-          </div>
-          <div style={s.divider} />
-          <div style={s.ruleSection}>
-            <p style={s.ruleMagenta}>做好防守姿势，15秒内全力快打！</p>
+        <div style={s.footer}>
+          <div style={s.footerGlassCard}>
+            <div style={s.ruleSection}>
+              <p style={s.ruleCyan}><span style={s.highlightCyan}>GET IN GUARD!!</span> <br/><span style={s.highlightCyan}>PUNCH AS FAST AS YOU CAN</span> <br/><span style={{color: "#aaa"}}>ตั้งการ์ดให้พร้อมแล้วต่อยให้เร็วที่สุด!!!</span></p>
+            </div>
+            <div style={s.divider} />
+            <div style={s.ruleSection}>
+              <p style={s.ruleMagenta}>做好防守姿势，15秒内全力快打 !!!</p>
+            </div>
           </div>
         </div>
 
@@ -365,6 +367,23 @@ const s = {
     borderRadius: "50px", 
     color: "#FFD700", 
     cursor: "pointer",
+  },
+  footer: {
+    width: "100%", 
+    paddingTop: "20px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    flexShrink: 0,
+  },
+  footerGlassCard: {
+    background: "rgba(255, 255, 255, 0.05)",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+    borderRadius: "15px",
+    padding: "15px 20px",
+    width: "100%",
+    maxWidth: "380px",
   },
   footerContainer: {
     width: "100%", 
