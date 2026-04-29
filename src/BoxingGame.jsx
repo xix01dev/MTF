@@ -105,15 +105,24 @@ export default function BoxingStateGame() {
   }, [gameStatus, readyCountdown, timeLeft]);
 
   useEffect(() => {
-    const pose = new window.Pose({ locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${f}` });
-    pose.setOptions({ modelComplexity: 1, minDetectionConfidence: 0.6, minTrackingConfidence: 0.6 });
-    pose.onResults(onResults);
-    if (videoRef.current) {
-      new window.Camera(videoRef.current, {
-        onFrame: async () => await pose.send({ image: videoRef.current }),
-        width: 1280, height: 720,
-      }).start();
-    }
+    const initCamera = () => {
+      if (!window.Pose || !window.Camera) {
+        setTimeout(initCamera, 100);
+        return;
+      }
+      
+      const pose = new window.Pose({ locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${f}` });
+      pose.setOptions({ modelComplexity: 1, minDetectionConfidence: 0.6, minTrackingConfidence: 0.6 });
+      pose.onResults(onResults);
+      if (videoRef.current) {
+        new window.Camera(videoRef.current, {
+          onFrame: async () => await pose.send({ image: videoRef.current }),
+          width: 1280, height: 720,
+        }).start();
+      }
+    };
+    
+    initCamera();
   }, []);
 
   return (
