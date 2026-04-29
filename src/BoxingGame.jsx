@@ -16,6 +16,10 @@ export default function BoxingStateGame() {
   const anchorPosRef = useRef({ left: null, right: null });
   const isOutRef = useRef({ left: false, right: false });
 
+  useEffect(() => {
+    console.log("BoxingGame mounted, gameStatus:", gameStatus);
+  }, []);
+
   const startGame = () => {
     setLeftCount(0); setRightCount(0); setTimeLeft(15); setReadyCountdown(5); setTotal(0);
     countsRef.current = { left: 0, right: 0 };
